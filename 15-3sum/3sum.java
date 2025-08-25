@@ -1,21 +1,32 @@
 class Solution {
-    //better-O(n^2)
     public List<List<Integer>> threeSum(int[] nums) {
-        HashSet<List<Integer>> hs=new HashSet<>();
+        List<List<Integer>> ans=new ArrayList<>();
+        Arrays.sort(nums);
         for(int i=0;i<nums.length;i++){
-            HashSet<Integer> h=new HashSet<>();
-            for(int j=i+1;j<nums.length;j++){
-                int third=-(nums[i]+nums[j]);
-                if(h.contains(third)){
-                   List<Integer> temp=Arrays.asList(nums[i],nums[j],third);
-                    Collections.sort(temp);
-                    hs.add(temp);
-                }
+            if(i>0 && nums[i-1]==nums[i]){
+                 continue;            }
+        
+        int j=i+1;
+        int k=nums.length-1;
+        while(j<k){
+            int s=nums[i]+nums[j]+nums[k];
+            if(s<0){
+                j++;
+            }
+            else if(s>0){
+                k--;
+            }
+            else{
+                ans.add(Arrays.asList(nums[i],nums[j],nums[k]));
+                while(j<k && nums[j]==nums[j+1]) j++;
+                while(j<k && nums[k]==nums[k-1]) k--;
+                j++;
+                k--;
 
-                h.add(nums[j]);
+
             }
         }
-        return new ArrayList<>(hs);
-        
+        }
+        return ans;
     }
 }
