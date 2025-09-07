@@ -4,22 +4,22 @@ class Solution {
             for(int i=0;i<n;i++){
                 nums1[i]=nums2[i];
             }
-            System.out.print(Arrays.toString(nums1));
             return;
         }
         else if(n==0){
-            System.out.print(Arrays.toString(nums2));
+            
+            return;
         }
         else{
             int p1=m-1;
             int p2=n-1;
             int k=m+n-1;
-            while(p1>=0&& p2>=0){
+            while(p1>=0 && p2>=0){
                 if(nums1[p1]>=nums2[p2]){
                     nums1[k--]=nums1[p1--];
                 }
                 else{
-                    nums1[k--]=nums2[p2--];
+                     nums1[k--]=nums2[p2--];
                 }
             }
             while(p1>=0){
@@ -28,7 +28,7 @@ class Solution {
             while(p2>=0){
                 nums1[k--]=nums2[p2--];
             }
-            System.out.println(Arrays.toString(nums1));
         }
+        
     }
 }
