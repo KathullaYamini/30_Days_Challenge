@@ -17,7 +17,7 @@ class Solution {
             if(nums[m-1]<nums[m] && nums[m]>nums[m+1]){
                 return m;
             }
-            if(nums[m]>nums[m-1] && nums[m]<nums[m+1]){
+            else if(nums[m]>nums[m-1] && nums[m]<nums[m+1]){
                 l=m+1;
             }
             else{
